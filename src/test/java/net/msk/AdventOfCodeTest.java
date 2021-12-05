@@ -45,11 +45,12 @@ public class AdventOfCodeTest {
                 if(sum > previousSum) {
                     countHigherThanPreviousThree++;
                 }
+                previousSum = sum;
             }
         }
 
         System.out.println("Count: " + countHigherThanPreviousThree);
-        Assertions.assertEquals(1997, countHigherThanPreviousThree);
+        Assertions.assertEquals(1702, countHigherThanPreviousThree);
     }
 
     private List<Integer> getDay1DataAsIntList() throws IOException, URISyntaxException {
