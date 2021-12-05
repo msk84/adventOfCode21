@@ -12,10 +12,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class AdventOfCodeTest {
+public class Day1 {
 
     @Test
-    public void adventOfCode_day1_test() throws IOException, URISyntaxException {
+    public void task1Test() throws IOException, URISyntaxException {
         final List<Integer> data = this.getDay1DataAsIntList();
         int countHigherThanPrevious = 0;
 
@@ -30,7 +30,7 @@ public class AdventOfCodeTest {
     }
 
     @Test
-    public void adventOfCode_day2_test() throws IOException, URISyntaxException {
+    public void task2Test() throws IOException, URISyntaxException {
         final List<Integer> data = this.getDay1DataAsIntList();
         int countHigherThanPreviousThree = 0;
         Integer previousSum = null;
