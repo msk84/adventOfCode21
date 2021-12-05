@@ -25,7 +25,7 @@ public class Day1 {
             }
         }
 
-        System.out.println("Count: " + countHigherThanPrevious);
+        System.out.println("Result: " + countHigherThanPrevious);
         Assertions.assertEquals(1665, countHigherThanPrevious);
     }
 
@@ -49,7 +49,7 @@ public class Day1 {
             }
         }
 
-        System.out.println("Count: " + countHigherThanPreviousThree);
+        System.out.println("Result: " + countHigherThanPreviousThree);
         Assertions.assertEquals(1702, countHigherThanPreviousThree);
     }
 
