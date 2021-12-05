@@ -41,6 +41,35 @@ public class Day2 {
         Assertions.assertEquals(955, depth);
     }
 
+    @Test
+    public void task2Test() throws IOException, URISyntaxException {
+        final List<NavData> data = this.getDay2Data();
+
+        int horizontalPosition = 0;
+        int depth = 0;
+        int aim = 0;
+
+        for(final NavData navData : data) {
+            if(Day2NavDirection.forward == navData.direction) {
+                horizontalPosition += navData.value;
+                depth += aim * navData.value;
+            }
+            else if(Day2NavDirection.down == navData.direction) {
+                aim += navData.value;
+            }
+            else if (Day2NavDirection.up == navData.direction) {
+                aim -= navData.value;
+            }
+            else {
+                Assertions.fail("Invalid navigation direction.");
+            }
+        }
+
+        System.out.println("Result: " + horizontalPosition * depth);
+        Assertions.assertEquals(2083, horizontalPosition);
+        Assertions.assertEquals(1002964, depth);
+    }
+
     private List<NavData> getDay2Data() throws IOException, URISyntaxException {
         final Path path = Paths.get(getClass().getClassLoader()
                 .getResource("day2_data").toURI());
