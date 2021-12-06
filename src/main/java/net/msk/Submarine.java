@@ -33,4 +33,35 @@ public class Submarine {
             }
         }
     }
+
+    public int calculatePowerConsumption(final List<String> diagnosticDataList, final int numberOfBits) {
+        int gammaRate = 0;
+        int epsilonRate = 0;
+
+        for(int bitPos = 0; bitPos < numberOfBits; bitPos++) {
+            int mask = 1 << bitPos;
+            int zeroCount = 0;
+            int oneCount = 0;
+
+            for (String diagnosticData : diagnosticDataList) {
+                int intData = Integer.parseUnsignedInt(diagnosticData, 2);
+                if ((intData & mask) != 0) {
+                    oneCount++;
+                }
+                else {
+                    zeroCount++;
+                }
+            }
+
+            if(zeroCount > oneCount) {
+                gammaRate = gammaRate & ~0;
+                epsilonRate = epsilonRate | (1 << bitPos);
+            }
+            else {
+                gammaRate = gammaRate | (1 << bitPos);
+                epsilonRate = epsilonRate & ~0;
+            }
+        }
+        return gammaRate * epsilonRate;
+    }
 }
