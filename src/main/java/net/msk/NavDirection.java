@@ -1,7 +1,7 @@
 package net.msk;
 
-public enum Day2NavDirection {
+public enum NavDirection {
     forward,
     up,
-    down;
+    down
 }

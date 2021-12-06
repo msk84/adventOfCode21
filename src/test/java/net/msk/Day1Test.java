@@ -9,10 +9,11 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class Day1 {
+public class Day1Test {
 
     @Test
     public void task1Test() throws IOException, URISyntaxException {
@@ -54,8 +55,8 @@ public class Day1 {
     }
 
     private List<Integer> getDay1DataAsIntList() throws IOException, URISyntaxException {
-        final Path path = Paths.get(getClass().getClassLoader()
-                .getResource("day1_data").toURI());
+        final Path path = Paths.get(Objects.requireNonNull(getClass().getClassLoader()
+                .getResource("day1_data")).toURI());
 
         final Stream<String> lines = Files.lines(path);
         final List<Integer> dataAsInt = lines.mapToInt(Integer::parseInt)
