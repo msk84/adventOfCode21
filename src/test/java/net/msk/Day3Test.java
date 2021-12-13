@@ -22,6 +22,13 @@ public class Day3Test {
         Assertions.assertEquals(2724524, powerConsumption);
     }
 
+    @Test
+    public void task2Test() throws Exception {
+        final Submarine submarine = new Submarine();
+        final int lifeSupportRating = submarine.calculateLifeSupportRating(this.getDay3Data(), 12);
+        Assertions.assertEquals(2775870, lifeSupportRating);
+    }
+
     private List<String> getDay3Data() throws IOException, URISyntaxException {
         final Path path = Paths.get(Objects.requireNonNull(getClass().getClassLoader()
                 .getResource("day3_data")).toURI());
