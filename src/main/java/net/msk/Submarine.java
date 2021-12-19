@@ -1,6 +1,8 @@
 package net.msk;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class Submarine {
 
@@ -138,5 +140,22 @@ public class Submarine {
         else {
             return expectedBitValue == 0;
         }
+    }
+
+    public long getHydrothermalVentCount(final List<VentMapDataEntry> ventMapDatumEntries, final int filterLimit) {
+        final int[][] ventMap = new int[1000][1000];
+
+        for(final VentMapDataEntry ventMapDataEntry : ventMapDatumEntries) {
+            final List<VentCoordinate> ventCoordinates = ventMapDataEntry.getCoveredVentCoordinates();
+            for(VentCoordinate coordinate : ventCoordinates) {
+                ventMap[coordinate.getY()][coordinate.getX()] += 1;
+            }
+        }
+
+        return Arrays.asList(ventMap)
+                .parallelStream()
+                .flatMapToInt(Arrays::stream)
+                .filter(v -> v >= filterLimit)
+                .count();
     }
 }
